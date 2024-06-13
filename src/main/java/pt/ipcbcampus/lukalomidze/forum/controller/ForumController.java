@@ -1,6 +1,7 @@
 package pt.ipcbcampus.lukalomidze.forum.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,8 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
+import pt.ipcbcampus.lukalomidze.forum.dto.CreatePostDTO;
 import pt.ipcbcampus.lukalomidze.forum.dto.PostDTO;
 import pt.ipcbcampus.lukalomidze.forum.service.ForumService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @CrossOrigin
 @RestController
@@ -23,7 +28,7 @@ public class ForumController {
 
     @PostMapping("/create-post")
     public void createPost(
-        @Valid PostDTO postDTO
+        @Valid CreatePostDTO postDTO
     ) {
         try {
             forumService.createPost(postDTO);
@@ -32,4 +37,9 @@ public class ForumController {
         }
     }
 
+    @GetMapping("/get-all-posts")
+    public List<PostDTO> getAllPosts() {
+        return forumService.getAllPosts();
+    }
+    
 }

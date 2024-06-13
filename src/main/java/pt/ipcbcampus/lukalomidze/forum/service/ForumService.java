@@ -1,11 +1,14 @@
 package pt.ipcbcampus.lukalomidze.forum.service;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pt.ipcbcampus.lukalomidze.forum.dto.CreatePostDTO;
 import pt.ipcbcampus.lukalomidze.forum.dto.PostDTO;
 import pt.ipcbcampus.lukalomidze.forum.entity.Post;
 import pt.ipcbcampus.lukalomidze.forum.repository.PostRepository;
@@ -22,7 +25,7 @@ public class ForumService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public void createPost(PostDTO postDTO) throws IOException {
+    public void createPost(CreatePostDTO postDTO) throws IOException {
         String imageUrl = azureStorageService.uploadBlob(postDTO.getImage());
         
         Post post = modelMapper.map(postDTO, Post.class);
@@ -30,5 +33,13 @@ public class ForumService {
         post.setImageUrl(imageUrl);
 
         postRepository.save(post);
+    }
+
+    public List<PostDTO> getAllPosts() {
+        var posts = postRepository.findAll();
+
+        return posts.stream()
+            .map(post -> modelMapper.map(post, PostDTO.class))
+        .collect(Collectors.toList());
     }
 }

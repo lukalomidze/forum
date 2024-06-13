@@ -1,7 +1,5 @@
 package pt.ipcbcampus.lukalomidze.forum.entity;
 
-import java.net.URI;
-
 import org.springframework.data.annotation.Id;
 
 import lombok.Data;
@@ -12,5 +10,5 @@ public class Post {
     private String id;
     private String author;
     private String content;
-    private URI imageUri;
+    private String imageUrl;
 }

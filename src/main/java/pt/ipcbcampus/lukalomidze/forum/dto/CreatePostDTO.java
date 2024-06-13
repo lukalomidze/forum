@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class PostDTO {
+public class CreatePostDTO {
     @NotBlank
     private String author;
     @NotBlank

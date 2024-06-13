@@ -16,8 +16,6 @@ import pt.ipcbcampus.lukalomidze.forum.dto.CreatePostDTO;
 import pt.ipcbcampus.lukalomidze.forum.dto.PostDTO;
 import pt.ipcbcampus.lukalomidze.forum.service.ForumService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @CrossOrigin
 @RestController

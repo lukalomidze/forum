@@ -18,8 +18,9 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<groupId>com.azure.spring</groupId>
+			<artifactId>spring-cloud-azure-starter-data-cosmos</artifactId>
+			<version>5.13.0</version>
 		</dependency>
 
 		<dependency>

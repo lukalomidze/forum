@@ -10,13 +10,13 @@ import com.azure.storage.blob.BlobServiceClientBuilder;
 @Configuration
 public class AzureStorageConfig {
 
-    @Value("${azure.storage_account.name}")
+    @Value("${spring.cloud.azure.storage.name}")
     private String accountName;
 
-    @Value("${azure.storage_account.key}")
+    @Value("${spring.cloud.azure.storage.key}")
     private String accountKey;
 
-    @Value("${azure.storage_account.container.name}")
+    @Value("${spring.cloud.azure.storage.container.name}")
     private String containerName;
 
     @Bean

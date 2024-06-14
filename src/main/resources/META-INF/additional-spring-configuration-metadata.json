@@ -1,16 +1,16 @@
 {"properties": [
   {
-    "name": "azure.storage_account.name",
+    "name": "spring.cloud.azure.storage.name",
     "type": "java.lang.String",
     "description": "Azure storage account name"
   },
   {
-    "name": "azure.storage_account.key",
+    "name": "spring.cloud.azure.storage.key",
     "type": "java.lang.String",
     "description": "Azure storage account access key"
   },
   {
-    "name": "azure.storage_account.container.name",
+    "name": "spring.cloud.azure.storage.container.name",
     "type": "java.lang.String",
     "description": "Azure storage account blob container name"
   }

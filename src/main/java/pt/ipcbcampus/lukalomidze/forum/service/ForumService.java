@@ -3,6 +3,7 @@ package pt.ipcbcampus.lukalomidze.forum.service;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class ForumService {
     public List<PostDTO> getAllPosts() {
         var posts = postRepository.findAll();
 
-        return posts.stream()
+        return StreamSupport.stream(posts.spliterator(), true)
             .map(post -> modelMapper.map(post, PostDTO.class))
         .collect(Collectors.toList());
     }

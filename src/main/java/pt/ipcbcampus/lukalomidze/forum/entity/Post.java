@@ -1,5 +1,7 @@
 package pt.ipcbcampus.lukalomidze.forum.entity;
 
+import java.time.LocalDateTime;
+
 import org.springframework.data.annotation.Id;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
@@ -16,4 +18,5 @@ public class Post {
     private String author;
     private String content;
     private String imageUrl;
+    private LocalDateTime creationTime;
 }

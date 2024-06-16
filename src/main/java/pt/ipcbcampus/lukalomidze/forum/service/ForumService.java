@@ -1,6 +1,8 @@
 package pt.ipcbcampus.lukalomidze.forum.service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -32,6 +34,7 @@ public class ForumService {
         Post post = modelMapper.map(postDTO, Post.class);
 
         post.setImageUrl(imageUrl);
+        post.setCreationTime(LocalDateTime.now(ZoneOffset.UTC));
 
         postRepository.save(post);
     }

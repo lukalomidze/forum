@@ -40,7 +40,7 @@ public class ForumService {
     }
 
     public List<PostDTO> getAllPosts() {
-        var posts = postRepository.findAll();
+        var posts = postRepository.findAllByOrderByCreationTimeDesc();
 
         return StreamSupport.stream(posts.spliterator(), true)
             .map(post -> modelMapper.map(post, PostDTO.class))

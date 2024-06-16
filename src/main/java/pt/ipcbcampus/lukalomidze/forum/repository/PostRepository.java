@@ -8,5 +8,5 @@ import pt.ipcbcampus.lukalomidze.forum.entity.Post;
 
 @Repository
 public interface PostRepository extends CosmosRepository<Post, String> {
-    
+    public Iterable<Post> findAllByOrderByCreationTimeDesc();
 }

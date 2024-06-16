@@ -29,11 +29,12 @@ public class ForumService {
     private ModelMapper modelMapper;
 
     public void createPost(CreatePostDTO postDTO) throws IOException {
-        String imageUrl = azureStorageService.uploadBlob(postDTO.getImage());
-        
         Post post = modelMapper.map(postDTO, Post.class);
+        
+        if (!postDTO.getImage().isEmpty()) {
+            post.setImageUrl(azureStorageService.uploadBlob(postDTO.getImage()));
+        }
 
-        post.setImageUrl(imageUrl);
         post.setCreationTime(LocalDateTime.now(ZoneOffset.UTC));
 
         postRepository.save(post);

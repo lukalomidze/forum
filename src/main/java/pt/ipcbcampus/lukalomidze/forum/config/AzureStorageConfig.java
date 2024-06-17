@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
+import com.azure.storage.blob.models.PublicAccessType;
 
 @Configuration
 public class AzureStorageConfig {
@@ -22,9 +23,16 @@ public class AzureStorageConfig {
     @Bean
     public BlobContainerClient blobServiceClient() {
         String connectionString = String.format("DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s;EndpointSuffix=core.windows.net", accountName, accountKey);
-        return new BlobServiceClientBuilder()
+        
+        var blobContainerClient = new BlobServiceClientBuilder()
             .connectionString(connectionString)
             .buildClient()
-        .getBlobContainerClient(containerName);
+        .createBlobContainerIfNotExists(containerName);
+
+        blobContainerClient.setAccessPolicy(
+            PublicAccessType.BLOB, null
+        );
+
+        return blobContainerClient;
     }
 }

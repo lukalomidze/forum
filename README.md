@@ -7,6 +7,6 @@ Features:
 2. Viewing posts
 3. Automatic daily deletion
 
-Deployed as a docker container to azure
+Deployed as a docker container to azure, uses storage account to store image as blobs and Azure CosmosDB as a database
 
-demo: https://frontend-container-app--6sjk7f2.ashyflower-3312f080.germanywestcentral.azurecontainerapps.io/
+Demo: https://frontend-container-app--6sjk7f2.ashyflower-3312f080.germanywestcentral.azurecontainerapps.io/
